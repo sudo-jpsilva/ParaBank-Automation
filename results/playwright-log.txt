@@ -1,0 +1,122 @@
+{"level":30,"time":"2026-02-06T18:06:05.920Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Listening on 127.0.0.1:39271"}
+{"level":30,"time":"2026-02-06T18:06:05.966Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-02-06T18:06:05.967Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"No active browser, creating a new one"}
+{"level":30,"time":"2026-02-06T18:06:06.344Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Setting default timeout for context context=6a23414e-1dae-48f2-946a-bb5bf927df94 to 10000"}
+{"level":30,"time":"2026-02-06T18:06:06.344Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changed active context: context=6a23414e-1dae-48f2-946a-bb5bf927df94"}
+{"level":30,"time":"2026-02-06T18:06:06.734Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Video path: undefined"}
+{"level":30,"time":"2026-02-06T18:06:06.734Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changed active page"}
+{"level":30,"time":"2026-02-06T18:06:11.620Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method newPage"}
+{"level":30,"time":"2026-02-06T18:06:11.628Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:11.629Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with role=button[name=\"Consent\"] in page."}
+{"level":30,"time":"2026-02-06T18:06:11.733Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:11.739Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:11.739Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with role=button[name=\"Consent\"] in page."}
+{"level":30,"time":"2026-02-06T18:06:11.875Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:11.884Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-02-06T18:06:11.885Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@baa364e57758d76318105c0660850c46\"},\"headless\":true,\"_contextStack\":[{\"id\":\"context=6a23414e-1dae-48f2-946a-bb5bf927df94\",\"c\":{\"_type\":\"BrowserContext\",\"_guid\":\"browser-context@86563e969881da2526f6bc1f8d5dec6c\"},\"pageStack\":[{\"id\":\"page=6ccc65c1-fcec-489f-a35f-560670425dd9\",\"p\":{\"_type\":\"Page\",\"_guid\":\"page@bdfcf0db10bdbce85233de79e023a1d6\"},\"timestamp\":1770401166.733,\"pageErrors\":[],\"errorIndex\":0,\"consoleMessages\":[{\"type\":\"error\",\"text\":\"Mixed Content: The page at 'https://automationexercise.com/' was loaded over HTTPS, but requested an insecure stylesheet 'http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100'. This request has been blocked; the content must be served over HTTPS.\",\"location\":{\"url\":\"https://automationexercise.com/\",\"lineNumber\":0,\"columnNumber\":0},\"time\":\"2026-02-06T18:06:08.381Z\"},{\"type\":\"error\",\"text\":\"Mixed Content: The page at 'https://automationexercise.com/' was loaded over HTTPS, but requested an insecure stylesheet 'http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700'. This request has been blocked; the content must be served over HTTPS.\",\"location\":{\"url\":\"https://automationexercise.com/\",\"lineNumber\":0,\"columnNumber\":0},\"time\":\"2026-02-06T18:06:08.382Z\"},{\"type\":\"error\",\"text\":\"Mixed Content: The page at 'https://automationexercise.com/' was loaded over HTTPS, but requested an insecure stylesheet 'http://fonts.googleapis.com/css?family=Abel'. This request has been blocked; the content must be served over HTTPS.\",\"location\":{\"url\":\"https://automationexercise.com/\",\"lineNumber\":0,\"columnNumber\":0},\"time\":\"2026-02-06T18:06:08.382Z\"}],\"consoleIndex\":0,\"activeDownloads\":{}}],\"traceFile\":\"\"}],\"id\":\"browser=5fc9634d-3963-4d94-9f96-c133eb48200b\"}"}
+{"level":30,"time":"2026-02-06T18:06:12.119Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Video path: undefined"}
+{"level":30,"time":"2026-02-06T18:06:12.119Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changed active page"}
+{"level":30,"time":"2026-02-06T18:06:13.422Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method newPage"}
+{"level":30,"time":"2026-02-06T18:06:13.427Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getText"}
+{"level":30,"time":"2026-02-06T18:06:13.427Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=form in page."}
+{"level":30,"time":"2026-02-06T18:06:13.476Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Retrieved text for element id=form containing Login to your account\nLogin\nOR\nNew User Signup!\nSignup"}
+{"level":30,"time":"2026-02-06T18:06:13.476Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getText"}
+{"level":30,"time":"2026-02-06T18:06:13.482Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:13.482Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"form\"]/div/div/div[3]/div/form/input[2] in page."}
+{"level":30,"time":"2026-02-06T18:06:13.492Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:13.496Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:13.496Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"form\"]/div/div/div[3]/div/form/input[3] in page."}
+{"level":30,"time":"2026-02-06T18:06:13.572Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:13.578Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:13.578Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"form\"]/div/div/div[3]/div/form/button in page."}
+{"level":30,"time":"2026-02-06T18:06:13.888Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:13.892Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:13.892Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with text=Enter Account Information in page."}
+{"level":30,"time":"2026-02-06T18:06:13.969Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:13.974Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:13.975Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=id_gender1 in page."}
+{"level":30,"time":"2026-02-06T18:06:13.996Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:14.000Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.000Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=name in page."}
+{"level":30,"time":"2026-02-06T18:06:14.014Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.034Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.035Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=password in page."}
+{"level":30,"time":"2026-02-06T18:06:14.044Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.048Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.048Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=days in page."}
+{"level":30,"time":"2026-02-06T18:06:14.075Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Option entries: 32"}
+{"level":30,"time":"2026-02-06T18:06:14.075Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Selected entries: 1"}
+{"level":30,"time":"2026-02-06T18:06:14.075Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.079Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.080Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=months in page."}
+{"level":30,"time":"2026-02-06T18:06:14.094Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Option entries: 13"}
+{"level":30,"time":"2026-02-06T18:06:14.094Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Selected entries: 1"}
+{"level":30,"time":"2026-02-06T18:06:14.094Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.097Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.097Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=years in page."}
+{"level":30,"time":"2026-02-06T18:06:14.119Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Option entries: 123"}
+{"level":30,"time":"2026-02-06T18:06:14.119Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Selected entries: 1"}
+{"level":30,"time":"2026-02-06T18:06:14.119Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.125Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.125Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=first_name in page."}
+{"level":30,"time":"2026-02-06T18:06:14.131Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.134Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.134Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=last_name in page."}
+{"level":30,"time":"2026-02-06T18:06:14.142Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.145Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.145Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=address1 in page."}
+{"level":30,"time":"2026-02-06T18:06:14.151Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.154Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.155Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=country in page."}
+{"level":30,"time":"2026-02-06T18:06:14.175Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Option entries: 7"}
+{"level":30,"time":"2026-02-06T18:06:14.175Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Selected entries: 1"}
+{"level":30,"time":"2026-02-06T18:06:14.175Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method selectOption"}
+{"level":30,"time":"2026-02-06T18:06:14.179Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.179Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=state in page."}
+{"level":30,"time":"2026-02-06T18:06:14.188Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.192Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.192Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=city in page."}
+{"level":30,"time":"2026-02-06T18:06:14.200Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.205Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.205Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=zipcode in page."}
+{"level":30,"time":"2026-02-06T18:06:14.213Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.216Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.216Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with id=mobile_number in page."}
+{"level":30,"time":"2026-02-06T18:06:14.227Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method fillText"}
+{"level":30,"time":"2026-02-06T18:06:14.230Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:14.230Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"form\"]/div/div/div/div[1]/form/button in page."}
+{"level":30,"time":"2026-02-06T18:06:14.978Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:14.985Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:14.985Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with text=ACCOUNT CREATED! in page."}
+{"level":30,"time":"2026-02-06T18:06:15.025Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:15.029Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:15.029Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with text=Continue in page."}
+{"level":30,"time":"2026-02-06T18:06:15.366Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:15.370Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:15.370Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a in page."}
+{"level":30,"time":"2026-02-06T18:06:21.127Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:21.131Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:21.131Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with text= ACCOUNT DELETED! in page."}
+{"level":30,"time":"2026-02-06T18:06:21.176Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method waitForElementState"}
+{"level":30,"time":"2026-02-06T18:06:21.180Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method click"}
+{"level":30,"time":"2026-02-06T18:06:21.181Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Strict mode is enabled, find Locator with //*[@id=\"form\"]/div/div/div/div/a in page."}
+{"level":30,"time":"2026-02-06T18:06:22.086Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method click"}
+{"level":30,"time":"2026-02-06T18:06:22.113Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.141Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.144Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.163Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.167Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.172Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.178Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.185Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.189Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changed active context: context=6a23414e-1dae-48f2-946a-bb5bf927df94"}
+{"level":30,"time":"2026-02-06T18:06:22.189Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changing current active page: page=3cf2b424-f89b-4578-9afe-e00a63aab09d"}
+{"level":30,"time":"2026-02-06T18:06:22.189Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Changed active page"}
+{"level":30,"time":"2026-02-06T18:06:22.194Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method closeContext"}
+{"level":30,"time":"2026-02-06T18:06:22.203Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Removed page=3e05e0fa-fa6f-4e84-a46b-cfdeeafa5c01 from context=6a23414e-1dae-48f2-946a-bb5bf927df94 page stack"}
+{"level":30,"time":"2026-02-06T18:06:22.206Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Removed page=347f893e-fa07-443f-a2ad-8f8a7e436037 from context=6a23414e-1dae-48f2-946a-bb5bf927df94 page stack"}
+{"level":30,"time":"2026-02-06T18:06:22.214Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method closeContext"}
+{"level":30,"time":"2026-02-06T18:06:22.232Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.232Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2026-02-06T18:06:22.335Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2026-02-06T18:06:22.442Z","pid":18708,"hostname":"LPT-5CG2144M6C","msg":"End of node method closeAllBrowsers"}

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.11.9 on win32)" generated="2026-02-06T18:06:03.625025" rpa="false" schemaversion="5">
+<suite id="s1" name="Signup" source="C:\Users\joaopsil\OneDrive - Capgemini\Ambiente de Trabalho\e-commerce-automation\tests\signup.robot">
+<test id="s1-t1" name="Signup" line="20">
+<kw name="Home Page Accept Cookies" owner="home_page">
+<kw name="New Page" owner="Browser">
+<msg time="2026-02-06T18:06:04.352485" level="INFO">Starting Browser process C:\Users\joaopsil\OneDrive - Capgemini\Ambiente de Trabalho\e-commerce-automation\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:39271</msg>
+<msg time="2026-02-06T18:06:11.622109" level="INFO">Successfully initialized new page object and opened url: https://automationexercise.com/</msg>
+<msg time="2026-02-06T18:06:11.622109" level="INFO">No browser and context was open. New browser and context was automatically opened when page is created.</msg>
+<arg>${HOME_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-02-06T18:06:04.136654" elapsed="7.486453"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-02-06T18:06:11.735137" level="INFO">Waited for Element with selector role=button[name="Consent"] at state visible</msg>
+<arg>${BUTTON_ACCEPT_COOKIES}</arg>
+<arg>visible</arg>
+<arg>10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-02-06T18:06:11.623107" elapsed="0.112030"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:11.737134" level="INFO">Clicks the element 'role=button[name="Consent"]'.</msg>
+<arg>${BUTTON_ACCEPT_COOKIES}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:11.736135" elapsed="0.140791"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:04.128448" elapsed="7.748478"/>
+</kw>
+<kw name="Signup Page" owner="login_signup">
+<kw name="New Page" owner="Browser">
+<msg time="2026-02-06T18:06:13.424818" level="INFO">Successfully initialized new page object and opened url: https://automationexercise.com/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-02-06T18:06:11.881432" elapsed="1.543386"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-02-06T18:06:13.478055" level="INFO">Text: 'Login to your account\nLogin\nOR\nNew User Signup!\nSignup'</msg>
+<msg time="2026-02-06T18:06:13.478055" level="INFO">${text} = Login to your account
+Login
+OR
+New User Signup!
+Signup</msg>
+<var>${text}</var>
+<arg>${SIGNUP_PAGE}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.424818" elapsed="0.053237"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${text}</arg>
+<arg>${SIGNUP_PAGE_TEXT}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.478055" elapsed="0.001065"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:11.880420" elapsed="1.598700"/>
+</kw>
+<kw name="Signup Form" owner="login_signup">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:13.480627" level="INFO">Fills the text 'joaop' in the given field.</msg>
+<arg>${NAME_PATH}</arg>
+<arg>joaop</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.480627" elapsed="0.012526"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:13.494153" level="INFO">Fills the text 'avlis.ooj@gmail.com' in the given field.</msg>
+<arg>${EMAIL_PATH}</arg>
+<arg>avlis.ooj@gmail.com</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.494153" elapsed="0.081527"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:13.576677" level="INFO">Clicks the element '//*[@id="form"]/div/div/div[3]/div/form/button'.</msg>
+<arg>${SIGNUP_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.575680" elapsed="0.314221"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-02-06T18:06:13.971756" level="INFO">Waited for Element with selector text=Enter Account Information at state visible</msg>
+<arg>${SIGNUP_SUCCESS}</arg>
+<arg>visible</arg>
+<arg>10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.889901" elapsed="0.081855"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:13.479120" elapsed="0.492636"/>
+</kw>
+<kw name="Account Information" owner="login_signup">
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:13.973837" level="INFO">Clicks the element 'id=id_gender1'.</msg>
+<arg>id=id_gender1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.972751" elapsed="0.025851"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:13.999611" level="INFO">Fills the text 'jpsilva' in the given field.</msg>
+<arg>id=name</arg>
+<arg>jpsilva</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:13.998602" elapsed="0.017520"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.018134" level="INFO">Fills the text '123456789' in the given field.</msg>
+<arg>id=password</arg>
+<arg>123456789</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.017132" elapsed="0.029249"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-02-06T18:06:14.047381" level="INFO">Selects the option(s) 10 by attribute SelectAttribute.value from element id=days.</msg>
+<arg>id=days</arg>
+<arg>value</arg>
+<arg>10</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.046381" elapsed="0.031264"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-02-06T18:06:14.078671" level="INFO">Selects the option(s) 4 by attribute SelectAttribute.value from element id=months.</msg>
+<arg>id=months</arg>
+<arg>value</arg>
+<arg>4</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.077645" elapsed="0.018542"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-02-06T18:06:14.097198" level="INFO">Selects the option(s) 1990 by attribute SelectAttribute.value from element id=years.</msg>
+<arg>id=years</arg>
+<arg>value</arg>
+<arg>1990</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.096187" elapsed="0.026903"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.124094" level="INFO">Fills the text 'joao' in the given field.</msg>
+<arg>id=first_name</arg>
+<arg>joao</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.123090" elapsed="0.010020"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.134108" level="INFO">Fills the text 'silva' in the given field.</msg>
+<arg>id=last_name</arg>
+<arg>silva</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.133110" elapsed="0.010681"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.143791" level="INFO">Fills the text 'Rua da Ruazinha, 123' in the given field.</msg>
+<arg>id=address1</arg>
+<arg>Rua da Ruazinha, 123</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.143791" elapsed="0.008090"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-02-06T18:06:14.153259" level="INFO">Selects the option(s) United States by attribute SelectAttribute.value from element id=country.</msg>
+<arg>id=country</arg>
+<arg>value</arg>
+<arg>United States</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.151881" elapsed="0.025351"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.178311" level="INFO">Fills the text 'California' in the given field.</msg>
+<arg>id=state</arg>
+<arg>California</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.177764" elapsed="0.012627"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.191454" level="INFO">Fills the text 'Los Angeles' in the given field.</msg>
+<arg>id=city</arg>
+<arg>Los Angeles</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.190926" elapsed="0.010872"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.203439" level="INFO">Fills the text '90001' in the given field.</msg>
+<arg>id=zipcode</arg>
+<arg>90001</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.202371" elapsed="0.012632"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-02-06T18:06:14.216017" level="INFO">Fills the text '1234567890' in the given field.</msg>
+<arg>id=mobile_number</arg>
+<arg>1234567890</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.215003" elapsed="0.012996"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:14.229023" level="INFO">Clicks the element '//*[@id="form"]/div/div/div/div[1]/form/button'.</msg>
+<arg>//*[@id="form"]/div/div/div/div[1]/form/button</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.229023" elapsed="0.750204"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:13.972751" elapsed="1.007471"/>
+</kw>
+<kw name="Check Account Created">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-02-06T18:06:15.026042" level="INFO">Waited for Element with selector text=ACCOUNT CREATED! at state visible</msg>
+<arg>text=ACCOUNT CREATED!</arg>
+<arg>visible</arg>
+<arg>10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-02-06T18:06:14.982240" elapsed="0.044804"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:15.028044" level="INFO">Clicks the element 'text=Continue'.</msg>
+<arg>text=Continue</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:15.027044" elapsed="0.340017"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:14.980222" elapsed="0.386839"/>
+</kw>
+<kw name="Delete Account">
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:15.369059" level="INFO">Clicks the element '//*[@id="header"]/div/div/div/div[2]/div/ul/li[5]/a'.</msg>
+<arg>//*[@id="header"]/div/div/div/div[2]/div/ul/li[5]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:15.368057" elapsed="5.760985"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-02-06T18:06:21.178744" level="INFO">Waited for Element with selector text= ACCOUNT DELETED! at state visible</msg>
+<arg>text= ACCOUNT DELETED!</arg>
+<arg>visible</arg>
+<arg>10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-02-06T18:06:21.129042" elapsed="0.049702"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-02-06T18:06:21.179801" level="INFO">Clicks the element '//*[@id="form"]/div/div/div/div/a'.</msg>
+<arg>//*[@id="form"]/div/div/div/div/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-02-06T18:06:21.178744" elapsed="0.909268"/>
+</kw>
+<status status="PASS" start="2026-02-06T18:06:15.367061" elapsed="6.721951"/>
+</kw>
+<msg time="2026-02-06T18:06:22.176293" level="INFO">Switching context to context=6a23414e-1dae-48f2-946a-bb5bf927df94 in CURRENT</msg>
+<msg time="2026-02-06T18:06:22.192910" level="INFO">Successfully changed active context: context=6a23414e-1dae-48f2-946a-bb5bf927df94</msg>
+<msg time="2026-02-06T18:06:22.216988" level="INFO">Successfully closed Context</msg>
+<status status="PASS" start="2026-02-06T18:06:04.124449" elapsed="17.983916"/>
+</test>
+<status status="PASS" start="2026-02-06T18:06:03.629298" elapsed="18.597508"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Signup" id="s1" pass="1" fail="0" skip="0">Signup</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
