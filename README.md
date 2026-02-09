@@ -54,7 +54,7 @@ End-to-end test automation using Robot Framework and Robot Framework Browser (Pl
 From the project root, run:
 
 ```bash
-uv run robot -d results tests/playwrightexample.robot
+uv run python -m robot -d results tests/playwrightexample.robot
 ```
 
 This will:
@@ -62,6 +62,8 @@ This will:
 - Create/use the Python environment managed by `uv`.
 - Execute Robot Framework using the `Browser` library.
 - Store the results in `results/` (`output.xml`, `log.html`, `report.html`).
+- Avoid using a globally installed `robot` script that might not see the
+  `Browser` package (this is why we prefer `python -m robot` here).
 
 ### Common issues
 
