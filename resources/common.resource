@@ -1,10 +1,11 @@
 *** Settings ***
 Library    Browser
 Library    ../libraries/faker.py
+Resource    ../resources/pages/home_page.resource
+Resource    ../resources/pages/login_sign_up.resource
 
 *** Variables ***
-${HOME_URL}    https://parabank.parasoft.com/parabank/index.htm
-${BROWSER}    firefox
+
 
 
 *** Keywords ***
@@ -46,8 +47,30 @@ Suite Setup 1
     Set Suite Variable    ${PASSWORD}    ${password}
 
 Test Setup
-    New Browser   ${BROWSER}   false
-    New Page    ${HOME_URL}
+    Open Browser
+    Go to Home Page
 
-Test Teardown
-    Close Browser
+Register New User
+    Click        ${sign_up_link}
+    Sleep        5s
+    Fill Text    ${first_name_path}        ${FIRSTNAME}
+    Fill Text    ${last_name_path}         ${LASTNAME}
+    Fill Text    ${street_path}            ${STREET}
+    Fill Text    ${city_path}              ${CITY}
+    Fill Text    ${state_path}             ${STATE}
+    Fill Text    ${zip_code_path}          ${ZIP}
+    Fill Text    ${phone_number_path}      ${PHONE}
+    Fill Text    ${ssn_path}               ${SSN}
+    Fill Text    ${username_path}          ${USERNAME}
+    Fill Text    ${password_path}          ${PASSWORD}
+    Fill Text    ${confirm_password_path}  ${PASSWORD}
+    Click        ${register_button}
+
+Suite Setup E2E
+    Suite Setup 1
+    Open Browser
+    Go to Home Page
+    Register New User
+    Logout User
+
+

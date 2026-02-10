@@ -1,58 +1,52 @@
 *** Settings ***
 Library    Browser
 Resource    ../resources/common.resource
+Resource    ../resources/pages/login_sign_up.resource
 
 Suite Setup   Suite Setup 1
 
-
-*** Variables ***
-
-${Chrome}    chromium
-${Firefox}   firefox
-${Edge}      edge
-
 *** Test Cases ***
-    
 Register New User
     [Documentation]    This test case verifies that a new user can register successfully.
     [Tags]    smoke
-    [Setup]    Test Setup
-    [Teardown]    Test Teardown
-    Click       css=#loginPanel > p:nth-child(3) > a
-    Fill Text    xpath=//*[@id="customer.firstName"]          ${FIRSTNAME}
-    Fill Text    xpath=//*[@id="customer.lastName"]           ${LASTNAME}
-    Fill Text    xpath=//*[@id="customer.address.street"]     ${STREET}
-    Fill Text    xpath=//*[@id="customer.address.city"]       ${CITY}
-    Fill Text    xpath=//*[@id="customer.address.state"]      ${STATE}
-    Fill Text    xpath=//*[@id="customer.address.zipCode"]    ${ZIP}
-    Fill Text    xpath=//*[@id="customer.phoneNumber"]        ${PHONE}
-    Fill Text    xpath=//*[@id="customer.ssn"]                ${SSN}
-    Fill Text    xpath=//*[@id="customer.username"]           ${USERNAME}
-    Fill Text    xpath=//*[@id="customer.password"]           ${PASSWORD}
-    Fill Text    xpath=//*[@id="repeatedPassword"]            ${PASSWORD}
-    Click        xpath=//*[@id="customerForm"]/table/tbody/tr[13]/td[2]/input
-    Wait For Elements State    text=Welcome ${USERNAME}    visible    10s
+    [Teardown]    Close Browser
+    Test Setup
+    Click        ${sign_up_link}
+    Sleep        5s
+    Fill Text    ${first_name_path}        ${FIRSTNAME}
+    Fill Text    ${last_name_path}         ${LASTNAME}
+    Fill Text    ${street_path}            ${STREET}
+    Fill Text    ${city_path}              ${CITY}
+    Fill Text    ${state_path}             ${STATE}
+    Fill Text    ${zip_code_path}          ${ZIP}
+    Fill Text    ${phone_number_path}      ${PHONE}
+    Fill Text    ${ssn_path}               ${SSN}
+    Fill Text    ${username_path}          ${USERNAME}
+    Fill Text    ${password_path}          ${PASSWORD}
+    Fill Text    ${confirm_password_path}  ${PASSWORD}
+    Click        ${register_button}
+    Wait For Elements State    text=Welcome ${USERNAME}   visible    10s
     
 Login With Valid Credentials
     [Documentation]    This test case verifies that a user can log in with valid credentials.
     [Tags]    smoke
-    [Setup]    Test Setup
-    [Teardown]    Test Teardown
-    Fill Text   css=#loginPanel input[name="username"]     ${USERNAME}
-    Fill Text   css=#loginPanel input[name="password"]     ${PASSWORD}
-    Click       xpath=//*[@id="loginPanel"]/form/div[3]/input
+    [Teardown]    Close Browser
+    Test Setup
+    Fill Text   ${login_username_path}     ${USERNAME}
+    Fill Text   ${login_password_path}     ${PASSWORD}
+    Click       ${login_button}    
     Wait For Elements State    text=Welcome ${FIRSTNAME}    visible    10s
 
 Login With Invalid Credentials
     [Documentation]    This test case verifies that a user cannot log in with invalid credentials.
     [Tags]    negative
-    [Setup]    Test Setup
-    [Teardown]    Test Teardown
+    [Teardown]    Close Browser
+    Test Setup
     ${username}    ${password}=    Generate Invalid User
-    Fill Text   css=#loginPanel input[name="username"]     ${username}    
-    Fill Text   css=#loginPanel input[name="password"]     ${password}
-    Click       xpath=//*[@id="loginPanel"]/form/div[3]/input
-    Wait For Elements State    text=The username and password could not be verified.    visible    10s
+    Fill Text   ${login_username_path}     ${username}    
+    Fill Text   ${login_password_path}     ${password}
+    Click       ${login_button}    
+    Wait For Elements State    ${wrong_login_message}      visible    10s
 
 
 
