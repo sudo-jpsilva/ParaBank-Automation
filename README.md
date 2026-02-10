@@ -1,6 +1,6 @@
-## e-commerce-automation
+## bank-automation
 
-End-to-end test automation using Robot Framework and Robot Framework Browser (Playwright).
+End-to-end test automation for a demo online banking application (Parabank) using Robot Framework and Robot Framework Browser (Playwright).
 
 
 ### Prerequisites
@@ -51,16 +51,20 @@ End-to-end test automation using Robot Framework and Robot Framework Browser (Pl
 
 ### Running the tests
 
-From the project root, run:
+From the project root, examples:
 
 ```bash
-uv run python -m robot -d results tests/playwrightexample.robot
+# Smoke suite (happy path: register + login)
+uv run python -m robot -d results tests/smoke_suite.robot
+
+# Negative suite (invalid logins, etc.)
+uv run python -m robot -d results tests/negative_suite.robot
 ```
 
-This will:
+These commands will:
 
 - Create/use the Python environment managed by `uv`.
-- Execute Robot Framework using the `Browser` library.
+- Execute Robot Framework using the `Browser` library against the Parabank demo site.
 - Store the results in `results/` (`output.xml`, `log.html`, `report.html`).
 - Avoid using a globally installed `robot` script that might not see the
   `Browser` package (this is why we prefer `python -m robot` here).
