@@ -22,16 +22,16 @@ Este TODO serve para guiar o desenvolvimento e depois estruturar o tutorial de a
 
 ### 2. Testes de registo e autenticação (funcionais e negativos)
 
-- [ ] **Registo de novo utilizador**
+- [x] **Registo de novo utilizador**
 	- Usar faker para gerar dados (FirstName, LastName, Username, Password...).
 	- Criar utilizador via UI.
 	- Validar mensagem de boas‑vindas após registo.
 
-- [ ] **Login com utilizador recém‑criado**
+- [x] **Login com utilizador recém‑criado**
 	- Reutilizar username/password criados (suite variables).
 	- Validar mensagem de boas‑vindas e/ou que o painel da conta é apresentado.
 
-- [ ] **Tentativa de login inválido**
+- [x] **Tentativa de login inválido**
 	- Username correto + password errada.
 	- Username inexistente.
 	- Validar mensagem de erro: "The username and password could not be verified." e permanência na página de login.
@@ -40,7 +40,7 @@ Este TODO serve para guiar o desenvolvimento e depois estruturar o tutorial de a
 
 ### 3. Gestão de contas (E2E – End‑to‑End)
 
-- [ ] **Abertura de nova conta**
+- [x] **Abertura de nova conta**
 	- Estar autenticado com utilizador válido.
 	- Abrir nova conta a partir de uma conta existente.
 	- Capturar o ID da nova conta apresentado no ecrã.
@@ -66,7 +66,37 @@ Este TODO serve para guiar o desenvolvimento e depois estruturar o tutorial de a
 
 ---
 
-### 5. Empacotar como tutorial
+### 5. Testes de API 
+
+- [x] **Login via API para obter CUSTOMER_ID**
+	- Chamar `GET /services/bank/login/{username}/{password}?_type=json`.
+	- Extrair `id` da resposta JSON e guardar em `${CUSTOMER_ID}` (keyword `Login With API to Get User ID`).
+	- Reutilizar `${CUSTOMER_ID}` nos restantes testes de API.
+
+- [x] **GET accounts de cliente válido**
+	- `GET /services/bank/customers/${CUSTOMER_ID}/accounts`.
+	- Validar status `200` e que a lista tem pelo menos uma conta.
+	- Verificar que cada conta tem `id`, `type`, `balance`.
+
+- [x] **GET accounts com customer id inválido (negativo)**
+	- Usar `${invalid_id}=00000`.
+	- `GET /services/bank/customers/${invalid_id}/accounts    expected_status=anything`.
+	- Validar status `400` e mensagem "Could not find customer #0".
+
+- [ ] **GET customer com CUSTOMER_ID válido**
+	- `GET /services/bank/customers/${CUSTOMER_ID}?_type=json`.
+	- Validar `200` e campos `firstName`, `lastName`, `address`, `phoneNumber`, `ssn` não vazios.
+
+- [ ] **GET customer com id inválido (negativo)**
+	- Usar `${invalid_id}`.
+	- Esperar `400` com mensagem adequada (documentar comportamento real).
+
+- [ ] **Update customer via API**
+	- Chamar endpoint de update (por ex. mudança de `phoneNumber` / morada).
+	- Validar que o `GET customer` reflete os novos dados.
+
+
+### 6. Empacotar como tutorial
 
 - [ ] Documentar, no README ou em docs separados:
 	- Setup de ambiente (Python, uv, Browser/rfbrowser init).
