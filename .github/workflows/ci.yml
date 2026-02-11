@@ -9,16 +9,18 @@ on:
   schedule:
     - cron: '0 2 * * *'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   tests:
     runs-on: ubuntu-latest
 
     concurrency:
       group: parabank-automation-${{ github.ref }}
-      cancel-in-progress: true 
-      # Ensures that only one workflow per branch runs at a time
-      # If a new workflow is triggered for the same branch, 
-      # the previous one is cancelled
+      cancel-in-progress: true
 
     steps:
       - name: Checkout repository
@@ -59,3 +61,24 @@ jobs:
         with:
           name: robot-results-${{ github.run_number }}
           path: results
+
+  publish-report:
+    needs: tests
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Robot results artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: robot-results-${{ github.run_number }}
+          path: results
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: results
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
