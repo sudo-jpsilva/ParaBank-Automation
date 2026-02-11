@@ -82,3 +82,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Add report links to summary
+        if: always()
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          echo "## Robot Framework reports" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- [log.html](${PAGE_URL}log.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [report.html](${PAGE_URL}report.html)" >> $GITHUB_STEP_SUMMARY
