@@ -8,7 +8,7 @@ ${BROWSER}    firefox
 
 *** Keywords ***
 Open Browser
-    New Browser   ${BROWSER}   false
+    New Browser   ${BROWSER}   True
     
 Go to Home Page
     New Page    ${HOME_URL}
