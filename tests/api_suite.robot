@@ -86,6 +86,7 @@ Get Customer Information With Invalid ID
 
 Update Customer Information
     [Documentation]    Happy-path test for POST /services/bank/customers/update/{customer_id}
+    [Tags]    known-issue
     Create Session    parabank    ${BASE_URL}     verify=False
 
     ${params}=    Create Dictionary
