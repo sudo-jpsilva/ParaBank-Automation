@@ -1,4 +1,4 @@
-name: CI
+name: GitHub Actions CI For ParaBank Automation
 
 on:
   push:
@@ -6,10 +6,19 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: parabank-automation-${{ github.ref }}
+      cancel-in-progress: true 
+      # Ensures that only one workflow per branch runs at a time
+      # If a new workflow is triggered for the same branch, 
+      # the previous one is cancelled
 
     steps:
       - name: Checkout repository
@@ -43,3 +52,10 @@ jobs:
       - name: Run Robot tests
         run: |
           uv run python -m robot -d results tests/
+
+      - name: Upload Robot results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-results-${{ github.run_number }}
+          path: results
