@@ -47,9 +47,9 @@ Este TODO serve para guiar o desenvolvimento e depois estruturar o tutorial de a
 	- Validar que a nova conta aparece na lista de contas.
 
 - [ ] **Transferência de fundos**
-	- Transferir, por exemplo, $100 da Conta A para a Conta B.
-	- Validar que o saldo da Conta A diminui e o da Conta B aumenta corretamente.
-	- Tratar casos de saldo insuficiente (teste negativo opcional).
+	Y - Transferir, por exemplo, $100 da Conta A para a Conta B. 
+	N - Validar que o saldo da Conta A diminui e o da Conta B aumenta corretamente.
+	N - Tratar casos de saldo insuficiente (teste negativo opcional).
 
 ---
 
@@ -83,16 +83,16 @@ Este TODO serve para guiar o desenvolvimento e depois estruturar o tutorial de a
 	- `GET /services/bank/customers/${invalid_id}/accounts    expected_status=anything`.
 	- Validar status `400` e mensagem "Could not find customer #0".
 
-- [ ] **GET customer com CUSTOMER_ID válido**
+- [x] **GET customer INFO com CUSTOMER_ID válido**
 	- `GET /services/bank/customers/${CUSTOMER_ID}?_type=json`.
 	- Validar `200` e campos `firstName`, `lastName`, `address`, `phoneNumber`, `ssn` não vazios.
 
-- [ ] **GET customer com id inválido (negativo)**
+- [x] **GET customer com id inválido (negativo)**
 	- Usar `${invalid_id}`.
 	- Esperar `400` com mensagem adequada (documentar comportamento real).
 
-- [ ] **Update customer via API**
-	- Chamar endpoint de update (por ex. mudança de `phoneNumber` / morada).
+- [x] **Update customer via API**
+	- Chamar endpoint de update.
 	- Validar que o `GET customer` reflete os novos dados.
 
 

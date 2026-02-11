@@ -1,11 +1,3 @@
-### 3. Gestão de contas (E2E – End‑to‑End)
-
-- [ ] **Abertura de nova conta**
-	- Estar autenticado com utilizador válido.
-	- Abrir nova conta a partir de uma conta existente.
-	- Capturar o ID da nova conta apresentado no ecrã.
-	- Validar que a nova conta aparece na lista de contas.
-
 *** Settings ***
 Library    Browser
 Library    Collections

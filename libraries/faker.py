@@ -56,7 +56,7 @@ def generate_random_password(length: int = 10) -> str:
     return "".join(random.choices(alphabet, k=length))
 
 
-def generate_street() -> str:
+def generate_address() -> str:
     number = random.randint(100, 999)
     return f"{number} {random.choice(STREETS)}"
 
@@ -75,7 +75,7 @@ def generate_zip_code() -> str:
 
 def generate_random_address() -> str:
     zip_code = generate_zip_code()
-    return f"{generate_street()}, {generate_city()}, {generate_state()} {zip_code}"
+    return f"{generate_address()}, {generate_city()}, {generate_state()} {zip_code}"
 
 
 def generate_phone_number() -> str:
