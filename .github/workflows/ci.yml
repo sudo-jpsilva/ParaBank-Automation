@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Initialize Robot Framework Browser
+        run: uv run rfbrowser init
+
       - name: Run Robot tests
         run: |
           uv run python -m robot -d results tests/
