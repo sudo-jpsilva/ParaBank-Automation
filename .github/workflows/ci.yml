@@ -26,6 +26,17 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Playwright system dependencies
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install-deps
+
       - name: Initialize Robot Framework Browser
         run: uv run rfbrowser init
 
