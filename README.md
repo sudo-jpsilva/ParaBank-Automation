@@ -1,13 +1,31 @@
-## bank-automation
+## ParaBank Automation (Robot Framework)
 
-End-to-end test automation for a demo online banking application (Parabank) using Robot Framework and Robot Framework Browser (Playwright).
+End-to-end and API test automation for the ParaBank demo online banking application, built with Robot Framework, Robot Framework Browser (Playwright) and RequestsLibrary.
+
+
+### Project goals
+
+- Practice modern test automation patterns (page objects, reusable keywords, API helpers).
+- Combine **UI** (Browser/Playwright) and **API** (RequestsLibrary) tests against the same system.
+- Use **GitHub Actions** + **GitHub Pages** to run tests automatically and publish Robot reports.
+
+
+### Tech stack
+
+- Python 3.11+
+- Robot Framework 7
+- Robot Framework Browser (Playwright)
+- Robot Framework Requests
+- `uv` for dependency and virtualenv management
+- GitHub Actions + GitHub Pages for CI and reporting
 
 
 ### Prerequisites
 
-- Python 3.11+
-- Node.js (includes `npm`/`npx`) installed and available on PATH
-- `uv` installed (for example: `pipx install uv` or according to the official documentation)
+- Python 3.11+ installed
+- Node.js (with `npm`/`npx`) on PATH
+- `uv` installed (for example: `pipx install uv` or see the official docs)
+
 
 ### Environment setup
 
@@ -15,7 +33,7 @@ End-to-end test automation for a demo online banking application (Parabank) usin
 
    ```bash
    git clone <REPO_URL>
-   cd e-commerce-automation
+   cd ParaBank-Automation
    ```
 
 2. Create/update the environment with `uv` (recommended):
@@ -30,52 +48,57 @@ End-to-end test automation for a demo online banking application (Parabank) usin
    uv run rfbrowser init
    ```
 
-   This command is important because it:
 
-   - Installs the Node wrapper dependencies under
-     `.venv/Lib/site-packages/Browser/wrapper`.
-   - Downloads the Playwright browsers and configures the binaries that
-     the Browser library uses internally.
+### Test suites and tags
 
-   If you skip this step (for example by running `rfbrowser init --skip-browsers`),
-   tests may fail with errors like:
+Main suites under `tests/`:
 
-   > Executable doesn't exist at ...chrome-headless-shell.exe
-   > Please run the following command to download new browsers: npx playwright install
+- `api_suite.robot` – API tests for customer and account endpoints
+- `functional_negative_suite.robot` – UI registration/login (happy path + negative)
+- `e2e_suite.robot` – end-to-end UI flows (open account, transfer funds)
 
-   In that case, just run again:
+Useful tags (can be combined):
 
-   ```bash
-   uv run rfbrowser init
-   ```
+- Layer: `api`, `ui`, `e2e`
+- Type: `smoke`, `regression`, `negative`, `boundary`, `known-issue`
+- Feature: `login`, `register`, `customer`, `accounts`, `transfer`
 
-### Running the tests
-
-From the project root, examples:
+Examples:
 
 ```bash
-# Smoke suite (happy path: register + login)
-uv run python -m robot -d results tests/smoke_suite.robot
+# All tests
+uv run python -m robot -d results tests/
 
-# Negative suite (invalid logins, etc.)
-uv run python -m robot -d results tests/negative_suite.robot
+# Only API smoke tests
+uv run python -m robot -d results --include api --include smoke tests/
+
+# Only UI login tests
+uv run python -m robot -d results --include ui --include login tests/
+
+# Regression suite excluding known issues
+uv run python -m robot -d results --include regression --exclude known-issue tests/
 ```
 
-These commands will:
 
-- Create/use the Python environment managed by `uv`.
-- Execute Robot Framework using the `Browser` library against the Parabank demo site.
-- Store the results in `results/` (`output.xml`, `log.html`, `report.html`).
-- Avoid using a globally installed `robot` script that might not see the
-  `Browser` package (this is why we prefer `python -m robot` here).
+### CI/CD and reports
+
+- GitHub Actions workflow at `.github/workflows/ci.yml`:
+  - Installs dependencies with `uv sync`.
+  - Initializes Robot Framework Browser (`uv run rfbrowser init`).
+  - Runs all Robot suites: `uv run python -m robot -d results tests/`.
+  - Uploads `results/` as an artifact.
+  - Publishes the same `results/` folder to GitHub Pages.
+- Each run adds direct links to `log.html` and `report.html` in the Actions **Summary**.
+
 
 ### Common issues
 
 - **Playwright executable missing** (message suggesting `npx playwright install`):
   - Make sure `uv run rfbrowser init` has been executed successfully.
 
-- **Issues with `node.exe` (psutil.AccessDenied) on shutdown**:
-  - These are usually warnings and do not prevent test execution.
-  - If they start causing failures, kill any orphan `node.exe` processes and
-    run `uv run rfbrowser init` again.
+- **Linux browser dependencies missing in CI**:
+  - The workflow installs them using `npx playwright install-deps`.
+
+- **Issues with `node.exe` on Windows shutdown**:
+  - Usually warnings only; kill orphan `node.exe` processes if needed and re-run `uv run rfbrowser init`.
 

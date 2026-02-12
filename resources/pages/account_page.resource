@@ -15,15 +15,15 @@ Open New Account
     Click        xpath=//*[@id="leftPanel"]/ul/li[1]/a
     Wait For Elements State    text=What type of Account would you like to open?    visible    10s
 
-Select Options Type Of Account 
-    [Documentation]    Selects the type of account to open.]
-    [Arguments]    ${account_type}=${account_type_savings}    
+Select Account Type
+    [Documentation]    Selects the type of account to open.
+    [Arguments]    ${account_type}=${account_type_savings}
     Select Options By    xpath=//*[@id="type"]    value    ${account_type}
     Wait For Elements State    id=fromAccountId    visible    10s
     Sleep    5s
 
-Select At Least One Acount To Transfer From
-    [Documentation]    Selects an account to transfer from when opening a new account.
+Select Source Account
+    [Documentation]    Selects a source account for transfers when opening a new account.
     ${accounts}=         Get Select Options    id=fromAccountId
     Log    Available accounts: ${accounts}
     ${from_account}=     Get From List        ${accounts}    0
@@ -47,7 +47,7 @@ Account Overview
     Click       xpath=//*[@id="leftPanel"]/ul/li[2]/a
     Wait For Elements State    xpath=//h1[normalize-space()="Accounts Overview"]    visible    10s
 
-Check if the new account is present on the table of accounts
+Verify New Account Appears In Overview    
     [Documentation]    Verifies that the newly created account appears in the accounts overview table.
     [Arguments]    ${account_id}
     Should Not Be Empty    ${account_id}    Account id argument is empty. Did Capture Account ID fail?
@@ -78,7 +78,7 @@ Check To Account
     END
     Fail    No different account available for to account.
 
-Amount to Transfer
+Enter Transfer Amount
     [Documentation]    Enters the amount to transfer in the transfer funds form.
     [Arguments]    ${amount}
     Fill Text   //*[@id="amount"]    txt=${amount}

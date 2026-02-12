@@ -37,8 +37,8 @@ Register New User
     Fill Form With Valid Data
 
 # Suite Setup and Test Setup Keywords
-Suite Setup 1
-    [Documentation]    This keyword is executed before the test suite starts. It can be used to set up any necessary preconditions for the tests.
+Initialize Test Data
+    [Documentation]    Initializes random user test data and stores it as suite-level variables.
     Clean and Initialize Database
     ${first}  ${last}  ${email}  ${password}  ${address}  ${city}
     ...  ${state}  ${zip}  ${phone}  ${ssn}  ${username}=    Generate Data For New User
@@ -55,9 +55,9 @@ Suite Setup 1
     Set Suite Variable    ${PASSWORD}      ${password}
 
 Suite Setup E2E
-    [Documentation]    This keyword is executed before the test suite starts. It can be used to set up any necessary preconditions for end-to-end testing.
+    [Documentation]    Suite setup for end-to-end tests: resets the database, generates user data, registers a new user and logs out.
     Clean and Initialize Database
-    Suite Setup 1
+    Initialize Test Data
     Open Browser
     Go to Home Page
     Register New User

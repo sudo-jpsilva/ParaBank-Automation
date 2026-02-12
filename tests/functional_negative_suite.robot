@@ -1,8 +1,8 @@
 *** Settings ***
 Resource    ../resources/common.resource
-Resource   ../resources/api.resource
+Resource    ../resources/api.resource
 
-Suite Setup   Suite Setup 1
+Suite Setup   Initialize Test Data
 
 *** Test Cases ***
 Register New User

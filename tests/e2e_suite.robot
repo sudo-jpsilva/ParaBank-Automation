@@ -13,12 +13,12 @@ Open New Account and Verify in Account Overview
     [Teardown]    Logout User
     Login User
     Open New Account   
-    Select Options Type Of Account  account_type=${account_type_savings}
-    Select At Least One Acount To Transfer From
+    Select Account Type    account_type=${account_type_savings}
+    Select Source Account
     Create New Account
     ${account_id}=    Capture Account ID
     Account Overview
-    Check if the new account is present on the table of accounts    ${account_id}
+    Verify New Account Appears In Overview        ${account_id}
 
 Account Transfer Between Accounts
     [Documentation]    This test logs in with a valid user, opens a new account, and performs a fund transfer between accounts.
@@ -26,12 +26,12 @@ Account Transfer Between Accounts
     [Teardown]    Logout User
     Login User
     Open New Account   
-    Select Options Type Of Account  account_type=${account_type_checking}
-    Select At Least One Acount To Transfer From
+    Select Account Type    account_type=${account_type_checking}
+    Select Source Account
     Create New Account
     #Transfer Funds
     Click       xpath=//*[@id="leftPanel"]/ul/li[3]/a
-    ${money}=    Amount to Transfer    100
+    ${money}=    Enter Transfer Amount    100
     ${from_account}=    Check From Account
     Select Options By    id=fromAccountId    value    ${from_account}    
     ${to_account}=      Check To Account    ${from_account}
