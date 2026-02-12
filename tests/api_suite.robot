@@ -12,7 +12,7 @@ ${invalid_id}    00000
 *** Test Cases ***
 Get Customers Accounts
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}/accounts
-    [Tags]    api    get
+    [Tags]    api    get    accounts    smoke
     Create Session For API
 
     ${params}=    Create Dictionary    _type=json
@@ -42,7 +42,7 @@ Get Customers Accounts
     
 Get Accounts With Invalid Customer ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}/accounts
-    [Tags]    api    get
+    [Tags]    api    get    accounts    negative     boundary
     Create Session For API
 
     ${response}=    GET On Session
@@ -57,7 +57,7 @@ Get Accounts With Invalid Customer ID
 
 Get Customer Information
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}
-    [Tags]    api    get
+    [Tags]    api    get    customer    smoke
     Create Session For API
 
     ${params}=    Create Dictionary    _type=json
@@ -76,7 +76,7 @@ Get Customer Information
 
 Get Customer Information With Invalid ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}
-    [Tags]    api    get
+    [Tags]    api    get    customer    negative     boundary    
     Create Session For API
 
     ${response}=    GET On Session
@@ -90,7 +90,7 @@ Get Customer Information With Invalid ID
 
 Update Customer Information
     [Documentation]    Happy-path test for POST /services/bank/customers/update/{customer_id}
-    [Tags]    api    post
+    [Tags]    api    post    customer    regression    
     
     Create Session For API
 

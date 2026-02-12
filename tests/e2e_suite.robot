@@ -9,7 +9,7 @@ Suite Setup   Suite Setup E2E
 Open New Account and Verify in Account Overview
     [Documentation]    This test logs in with a valid user, opens a new account from an existing one,
     ...                captures the ID of the new account displayed on the screen, and verifies that the new account appears in the accounts list.
-    [Tags]    smoke
+    [Tags]    ui    e2e    accounts    smoke
     [Teardown]    Logout User
     Login User
     Open New Account   
@@ -22,7 +22,7 @@ Open New Account and Verify in Account Overview
 
 Account Transfer Between Accounts
     [Documentation]    This test logs in with a valid user, opens a new account, and performs a fund transfer between accounts.
-    [Tags]    smoke
+    [Tags]    ui    e2e    transfer    smoke     regression
     [Teardown]    Logout User
     Login User
     Open New Account   

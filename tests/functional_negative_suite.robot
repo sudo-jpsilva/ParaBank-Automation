@@ -7,7 +7,7 @@ Suite Setup   Suite Setup 1
 *** Test Cases ***
 Register New User
     [Documentation]    This test case verifies that a new user can register successfully.
-    [Tags]    smoke
+    [Tags]    ui    register    smoke
     [Teardown]    Close Browser
     Test Setup
     Sign Up User
@@ -16,7 +16,7 @@ Register New User
 
 Login With Valid Credentials
     [Documentation]    This test case verifies that a user can log in with valid credentials.
-    [Tags]    smoke
+    [Tags]    ui    login    smoke
     [Teardown]    Close Browser
     Test Setup
     Login User
@@ -24,7 +24,7 @@ Login With Valid Credentials
 
 Login With Invalid Credentials
     [Documentation]    This test case verifies that a user cannot log in with invalid credentials.
-    [Tags]    negative
+    [Tags]    ui    login    negative    boundary
     [Teardown]    Close Browser
     Test Setup
     ${invalid_username}    ${invalid_password}=    Generate Invalid User
