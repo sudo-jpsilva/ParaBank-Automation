@@ -1,7 +1,6 @@
 *** Settings ***
-Library    Browser
 Resource    ../resources/common.resource
-Resource    ../resources/pages/login_sign_up.resource
+Resource   ../resources/api.resource
 
 Suite Setup   Suite Setup 1
 
