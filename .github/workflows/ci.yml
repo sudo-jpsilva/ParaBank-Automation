@@ -53,7 +53,7 @@ jobs:
 
       - name: Run Robot tests
         run: |
-          uv run python -m robot -d results --exclude known-issue tests/
+          uv run python -m robot -d results tests/
 
       - name: Upload Robot results
         if: always()
