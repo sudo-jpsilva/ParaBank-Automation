@@ -43,5 +43,39 @@ Account Transfer Between Accounts
     #Missing The confirmation of the trasnfer between accounts, values
     
 
+Open New Account and Verify Via API
+    [Documentation]    This test opens a new account in the UI and verifies via API that the new account appears in the customer's accounts list.
+    [Tags]    ui    e2e    api    accounts    regression
+    [Teardown]    Logout User
+    Login User
+    Login With API to Get User ID
+    Open New Account   
+    Select Account Type    account_type=${account_type_savings}
+    Select Source Account
+    Create New Account
+    ${account_id}=    Capture Account ID
+
+    Create Session For API
+    ${params}=    Create Dictionary    _type=json
+    ${response}=    GET On Session
+    ...    parabank
+    ...    /services/bank/customers/${CUSTOMER_ID}/accounts
+    ...    params=${params}
+    ...    expected_status=anything
+
+    Should Be Equal As Integers    ${response.status_code}    200
+    ${accounts}=    Set Variable    ${response.json()}
+
+    ${account_ids}=    Create List
+    FOR    ${account}    IN    @{accounts}
+        ${id}=    Get From Dictionary    ${account}    id
+        ${id}=    Convert To String    ${id}
+        Append To List    ${account_ids}    ${id}
+    END
+
+    ${account_id}=    Convert To String    ${account_id}
+    List Should Contain Value    ${account_ids}    ${account_id}
+
+
 
 
