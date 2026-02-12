@@ -64,8 +64,6 @@ Get And Validate Customer Information
     ...    ${expected_phone}  ${expected_address}  ${expected_city}   
     ...    ${expected_state}   ${expected_zip}   ${expected_ssn} 
 
-    Create Session For API
-
     ${params}=    Create Dictionary    _type=json
     ${response}=    GET On Session
     ...    parabank

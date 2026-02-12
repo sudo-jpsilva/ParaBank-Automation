@@ -2,7 +2,6 @@
 Library    Collections
 Resource    ../resources/common.resource
 Resource    ../resources/pages/account_page.resource
-Resource    ../resources/api.resource
 
 Suite Setup   Suite Setup E2E
 

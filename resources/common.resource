@@ -3,6 +3,7 @@ Library    Browser
 Library    ../libraries/faker.py
 Resource    ../resources/pages/home_page.resource
 Resource   ../resources/pages/login_sign_up.resource
+Resource    ../resources/api.resource
 
 *** Keywords ***
 

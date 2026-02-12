@@ -86,23 +86,21 @@ Get Customer Information With Invalid ID
 
 Update Customer Information
     [Documentation]    Happy-path test for POST /services/bank/customers/update/{customer_id}
-    [Tags]    known-issue
+    [Tags]    smoke
     
     Create Session For API
 
     ${params}=    Create Dictionary
-    ...    customerId=${CUSTOMER_ID}
     ...    firstName=UpdatedFirstName
     ...    lastName=UpdatedLastName
     ...    phoneNumber=555-9999
-    ...    address=Updated Street 123,
-    ...    city=Updated City,
-    ...    state=UP,
-    ...    zipCode=99999,
-    ...    ssn=999-99-9999,
-    ...    username=${USERNAME},
-    ...    password=${PASSWORD},
-    ...    _type=json
+    ...    street=Updated Street 123
+    ...    city=Updated City
+    ...    state=UP
+    ...    zipCode=99999
+    ...    ssn=999-99-9999
+    ...    username=${USERNAME}
+    ...    password=${PASSWORD}
 
     ${response}=    POST On Session
     ...    parabank
@@ -113,7 +111,6 @@ Update Customer Information
     Should Be Equal As Integers    ${response.status_code}    200
     Should Contain    ${response.text}    Successfully updated customer profile
 
-    # Validar que as informações foram realmente atualizadas
     Get And Validate Customer Information  expected_first=UpdatedFirstName    expected_last=UpdatedLastName    
     ...    expected_phone=555-9999   expected_address=Updated Street 123,  expected_city=Updated City,
     ...    expected_state=UP  expected_zip=99999   expected_ssn=999-99-9999
