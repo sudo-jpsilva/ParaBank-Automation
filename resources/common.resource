@@ -7,7 +7,6 @@ Resource   ../resources/pages/login_sign_up.resource
 *** Keywords ***
 
 # Data Generation Keywords
-
 Generate Data For New User
     [Documentation]    This keyword generates random data for a new user registration.
     ${first_name}    Generate First Name

@@ -59,6 +59,7 @@ Clean Data Base
     Should Be Equal As Integers    ${response.status_code}    204
 
 Get And Validate Customer Information
+    [Documentation]    Retrieves customer information via API and validates it against expected values.
     [Arguments]    ${expected_first}    ${expected_last}    
     ...    ${expected_phone}  ${expected_address}  ${expected_city}   
     ...    ${expected_state}   ${expected_zip}   ${expected_ssn} 

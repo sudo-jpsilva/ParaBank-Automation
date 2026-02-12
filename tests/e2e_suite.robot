@@ -11,6 +11,7 @@ Open New Account and Verify in Account Overview
     [Documentation]    This test logs in with a valid user, opens a new account from an existing one,
     ...                captures the ID of the new account displayed on the screen, and verifies that the new account appears in the accounts list.
     [Tags]    smoke
+    [Teardown]    Logout User
     Login User
     Open New Account   
     Select Options Type Of Account  account_type=${account_type_savings}
@@ -19,11 +20,11 @@ Open New Account and Verify in Account Overview
     ${account_id}=    Capture Account ID
     Account Overview
     Check if the new account is present on the table of accounts    ${account_id}
-    Logout User
 
 Account Transfer Between Accounts
     [Documentation]    This test logs in with a valid user, opens a new account, and performs a fund transfer between accounts.
     [Tags]    smoke
+    [Teardown]    Logout User
     Login User
     Open New Account   
     Select Options Type Of Account  account_type=${account_type_checking}
@@ -39,7 +40,6 @@ Account Transfer Between Accounts
     Transfer Funds    ${money}    ${from_account}    ${to_account}
     Account Overview
     Sleep    5s
-    Logout User
 
     #Missing The confirmation of the trasnfer between accounts, values
     
