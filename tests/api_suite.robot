@@ -12,7 +12,7 @@ ${invalid_id}    00000
 *** Test Cases ***
 Get Customers Accounts
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}/accounts
-    Create Session    parabank    ${BASE_URL}     verify=False
+    Create Session For API
 
     ${params}=    Create Dictionary    _type=json
     ${response}=    GET On Session
@@ -41,7 +41,7 @@ Get Customers Accounts
     
 Get Accounts With Invalid Customer ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}/accounts
-    Create Session    parabank    ${BASE_URL}     verify=False
+    Create Session For API
 
     ${response}=    GET On Session
     ...    parabank
@@ -55,7 +55,7 @@ Get Accounts With Invalid Customer ID
 
 Get Customer Information
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}
-    Create Session    parabank    ${BASE_URL}     verify=False
+    Create Session For API
 
     ${params}=    Create Dictionary    _type=json
     ${response}=    GET On Session
@@ -73,7 +73,7 @@ Get Customer Information
 
 Get Customer Information With Invalid ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}
-    Create Session    parabank    ${BASE_URL}     verify=False
+    Create Session For API
 
     ${response}=    GET On Session
     ...    parabank
@@ -87,7 +87,8 @@ Get Customer Information With Invalid ID
 Update Customer Information
     [Documentation]    Happy-path test for POST /services/bank/customers/update/{customer_id}
     [Tags]    known-issue
-    Create Session    parabank    ${BASE_URL}     verify=False
+    
+    Create Session For API
 
     ${params}=    Create Dictionary
     ...    customerId=${CUSTOMER_ID}
