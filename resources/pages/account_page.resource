@@ -1,7 +1,6 @@
 *** Settings ***
 Library    Browser
 Library    Collections
-Resource    ../resources/common.resource
 
 
 *** Variables ***
