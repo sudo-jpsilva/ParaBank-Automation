@@ -92,8 +92,8 @@ uv run python -m robot -d results --include api --include smoke tests/
 # Only UI login tests
 uv run python -m robot -d results --include ui --include login tests/
 
-# Regression suite (excluding known issues)
-uv run python -m robot -d results --include regression --exclude known-issue tests/
+# Regression tests
+uv run python -m robot -d results --include regression tests/
 
 # Dry-run (validate syntax without executing)
 uv run python -m robot --dryrun -d results tests/
