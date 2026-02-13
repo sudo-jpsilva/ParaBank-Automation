@@ -30,19 +30,6 @@ ParaBank-Automation/
 └── results/                        #   Test output (gitignored)
 ```
 
-### Import hierarchy
-
-```
-variables.resource          ← Global config (URLs, browser, constants)
-        ↑
-   page resources           ← Locators + UI keywords (POM)
-   api.resource             ← API helper keywords
-        ↑
-  common.resource           ← Imports everything; shared setups & data generation
-        ↑
-    test suites             ← Only import common.resource
-```
-
 ---
 
 ## Tech stack
