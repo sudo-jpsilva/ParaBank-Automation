@@ -24,8 +24,6 @@ ParaBank-Automation/
 │       └── account_page.resource   #       Account management pages
 ├── libraries/
 │   └── faker.py                    #   Custom data generation library
-├── data/
-│   └── users.yaml                  #   Test data (mass data)
 ├── .github/workflows/
 │   └── ci.yml                      #   GitHub Actions CI pipeline
 ├── pyproject.toml                  #   Python project & dependencies (uv)
