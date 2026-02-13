@@ -6,7 +6,7 @@ Resource    variables.resource
 *** Keywords ***
 
 Clean and Initialize Database
-    [Documentation]    Resets and initializes the ParaBank database to ensure a clean state for
+    [Documentation]    Resets and initializes the ParaBank database to ensure a clean state for testing.
     Clean Data Base
     Initialize Database
 
@@ -27,7 +27,7 @@ Login With API to Get User ID
     Set Suite Variable   ${CUSTOMER_ID}   ${customer_id}
 
 Initialize Database
-    [Documentation]    Reseta a base de dados do ParaBank via API.
+    [Documentation]    Initializes the ParaBank database via API.
     Create Session For API
     ${response}=    POST On Session
     ...    parabank
@@ -36,7 +36,7 @@ Initialize Database
     Should Be Equal As Integers    ${response.status_code}    204
 
 Clean Data Base
-    [Documentation]    Limpa os dados do ParaBank via API.
+    [Documentation]    Cleans the ParaBank database via API.
     Create Session For API
     ${response}=    POST On Session
     ...    parabank
@@ -68,7 +68,7 @@ Get And Validate Customer Information
     Should Be Equal As Strings     ${last_name}     ${expected_last}
     Should Be Equal As Strings     ${phone}         ${expected_phone}
 
-    # Campos aninhados (address)
+    # Nested fields (address)
     ${address}=       Get From Dictionary    ${customer}    address
     ${street}=        Get From Dictionary    ${address}     street
     ${city}=          Get From Dictionary    ${address}     city

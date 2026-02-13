@@ -27,18 +27,14 @@ Account Transfer Between Accounts
     Select Account Type    account_type=${ACCOUNT_TYPE_CHECKING}
     Select Source Account
     Create New Account
-    #Transfer Funds
-    Click       xpath=//*[@id="leftPanel"]/ul/li[3]/a
+    Click       ${TRANSFER_FUNDS_LINK}
     ${money}=    Enter Transfer Amount    100
     ${from_account}=    Check From Account
-    Select Options By    id=fromAccountId    value    ${from_account}    
+    Select Options By    ${FROM_ACCOUNT_SELECT}    value    ${from_account}    
     ${to_account}=      Check To Account    ${from_account}
-    Select Options By    id=toAccountId      value    ${to_account}
+    Select Options By    ${TO_ACCOUNT_SELECT}      value    ${to_account}
     Transfer Funds    ${money}    ${from_account}    ${to_account}
     Account Overview
-    Sleep    5s
-
-    #Missing The confirmation of the trasnfer between accounts, values
     
 
 Open New Account and Verify Via API
@@ -48,7 +44,7 @@ Open New Account and Verify Via API
     Login User
     Login With API to Get User ID
     Open New Account   
-    Select Account Type    account_type=${account_type_savings}
+    Select Account Type    account_type=${ACCOUNT_TYPE_SAVINGS}
     Select Source Account
     Create New Account
     ${account_id}=    Capture Account ID

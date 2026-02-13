@@ -34,7 +34,7 @@ Generate Invalid User
 # User Interaction Keywords
 Register New User
     [Documentation]    This keyword fills the registration form with valid data and submits it to create a new user account.
-    Click        ${sign_up_link}
+    Click        ${SIGN_UP_LINK}
     Fill Form With Valid Data
 
 # Suite Setup and Test Setup Keywords

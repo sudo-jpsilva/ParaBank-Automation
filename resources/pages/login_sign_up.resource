@@ -1,71 +1,72 @@
 *** Settings ***
 Library    Browser
+Resource   ../variables.resource
 
 *** Variables ***
 
-#Sign Up Buttons
+# Sign Up Navigation
+${SIGN_UP_LINK}                 css=#loginPanel > p:nth-child(3) > a
+${REGISTER_BUTTON}              //*[@id="customerForm"]/table/tbody/tr[13]/td[2]/input
 
-${sign_up_link}             css=#loginPanel > p:nth-child(3) > a
-${register_button}          //*[@id="customerForm"]/table/tbody/tr[13]/td[2]/input
+# Registration Form Fields
+${REG_FIRST_NAME}               //*[@id="customer.firstName"]
+${REG_LAST_NAME}                //*[@id="customer.lastName"]
+${REG_ADDRESS}                  //*[@id="customer.address.street"]
+${REG_CITY}                     //*[@id="customer.address.city"]
+${REG_STATE}                    //*[@id="customer.address.state"]
+${REG_ZIP_CODE}                 //*[@id="customer.address.zipCode"]
+${REG_PHONE}                    //*[@id="customer.phoneNumber"]
+${REG_SSN}                      //*[@id="customer.ssn"]
+${REG_USERNAME}                 //*[@id="customer.username"]
+${REG_PASSWORD}                 //*[@id="customer.password"]
+${REG_CONFIRM_PASSWORD}         //*[@id="repeatedPassword"]
 
-#Sign Up Form Fields
-${first_name_path}          //*[@id="customer.firstName"]
-${last_name_path}           //*[@id="customer.lastName"] 
-${address_path}             //*[@id="customer.address.street"]
-${city_path}                //*[@id="customer.address.city"]
-${state_path}               //*[@id="customer.address.state"]
-${zip_code_path}            //*[@id="customer.address.zipCode"]
-${phone_number_path}        //*[@id="customer.phoneNumber"]
-${ssn_path}                 //*[@id="customer.ssn"]
-${username_path}            //*[@id="customer.username"]
-${password_path}            //*[@id="customer.password"]
-${confirm_password_path}    //*[@id="repeatedPassword"]
+# Login Form Fields
+${LOGIN_USERNAME}               css=#loginPanel input[name="username"]
+${LOGIN_PASSWORD}               css=#loginPanel input[name="password"]
+${LOGIN_BUTTON}                 //*[@id="loginPanel"]/form/div[3]/input
+${LOGOUT_LINK}                  //*[@id="leftPanel"]/ul/li[8]/a
 
-#Validation Messages
-${login_error_message}      The username and password could not be verified.
-
-#Login Form Fields
-${login_username_path}      css=#loginPanel input[name="username"]
-${login_password_path}      css=#loginPanel input[name="password"]
-
-#Login Button
-${login_button}             //*[@id="loginPanel"]/form/div[3]/input
-${logout_link}              //*[@id="leftPanel"]/ul/li[8]/a
-
-${welcome_message}          Welcome
+# Validation Messages
+${LOGIN_ERROR_MESSAGE}          The username and password could not be verified.
+${WELCOME_MESSAGE}              Welcome
 
 *** Keywords ***
 
 Login User
+    [Documentation]    Logs in with the given credentials.
     [Arguments]    ${username}=${USERNAME}    ${password}=${PASSWORD}
-    Fill Text   ${login_username_path}     ${username}    
-    Fill Text   ${login_password_path}     ${password}
-    Click       xpath=${login_button}    
+    Fill Text   ${LOGIN_USERNAME}     ${username}    
+    Fill Text   ${LOGIN_PASSWORD}     ${password}
+    Click       xpath=${LOGIN_BUTTON}    
 
 Wait For Login Welcome Message
-    Wait For Elements State    text=${welcome_message} ${FIRSTNAME}    visible    10s
+    [Documentation]    Waits for the welcome message after successful login.
+    Wait For Elements State    text=${WELCOME_MESSAGE} ${FIRSTNAME}    visible    10s
 
 Wait For Login Error Message
-    Wait For Elements State    text=${login_error_message}      visible    10s
+    [Documentation]    Waits for the error message after failed login.
+    Wait For Elements State    text=${LOGIN_ERROR_MESSAGE}      visible    10s
 
 Logout User
-    Wait For Elements State    xpath=${logout_link}    visible    10s
-    Click        xpath=${logout_link}
+    [Documentation]    Logs out the current user.
+    Wait For Elements State    xpath=${LOGOUT_LINK}    visible    10s
+    Click        xpath=${LOGOUT_LINK}
 
 Fill Form With Valid Data
-    [Documentation]    This keyword fills the registration form with valid data
-    Wait And Fill Text    xpath=${first_name_path}        ${FIRSTNAME}
-    Wait And Fill Text    xpath=${last_name_path}         ${LASTNAME}
-    Wait And Fill Text    xpath=${address_path}           ${ADDRESS}
-    Wait And Fill Text    xpath=${city_path}              ${CITY}
-    Wait And Fill Text    xpath=${state_path}             ${STATE}
-    Wait And Fill Text    xpath=${zip_code_path}          ${ZIP}
-    Wait And Fill Text    xpath=${phone_number_path}      ${PHONE}
-    Wait And Fill Text    xpath=${ssn_path}               ${SSN}
-    Wait And Fill Text    xpath=${username_path}          ${USERNAME}
-    Wait And Fill Text    xpath=${password_path}          ${PASSWORD}
-    Wait And Fill Text    xpath=${confirm_password_path}  ${PASSWORD}
-    Click        xpath=${register_button}
+    [Documentation]    Fills the registration form with valid generated data and submits it.
+    Wait And Fill Text    xpath=${REG_FIRST_NAME}        ${FIRSTNAME}
+    Wait And Fill Text    xpath=${REG_LAST_NAME}         ${LASTNAME}
+    Wait And Fill Text    xpath=${REG_ADDRESS}            ${ADDRESS}
+    Wait And Fill Text    xpath=${REG_CITY}               ${CITY}
+    Wait And Fill Text    xpath=${REG_STATE}              ${STATE}
+    Wait And Fill Text    xpath=${REG_ZIP_CODE}           ${ZIP}
+    Wait And Fill Text    xpath=${REG_PHONE}              ${PHONE}
+    Wait And Fill Text    xpath=${REG_SSN}                ${SSN}
+    Wait And Fill Text    xpath=${REG_USERNAME}           ${USERNAME}
+    Wait And Fill Text    xpath=${REG_PASSWORD}           ${PASSWORD}
+    Wait And Fill Text    xpath=${REG_CONFIRM_PASSWORD}   ${PASSWORD}
+    Click        xpath=${REGISTER_BUTTON}
 
 Wait And Fill Text
     [Documentation]    Waits for a field to be visible, fills it with the given value, and verifies the value was entered.
@@ -80,7 +81,9 @@ Wait And Fill Text
     END
 
 Sign Up User
-    Click    ${sign_up_link}
+    [Documentation]    Navigates to the sign-up page.
+    Click    ${SIGN_UP_LINK}
 
 Wait For Sign Up Welcome Message
-    Wait For Elements State    text=${welcome_message} ${USERNAME}   visible    10s
+    [Documentation]    Waits for the welcome message after successful registration.
+    Wait For Elements State    text=${WELCOME_MESSAGE} ${USERNAME}   visible    10s

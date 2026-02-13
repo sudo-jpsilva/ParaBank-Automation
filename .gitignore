@@ -4,6 +4,7 @@ output.xml
 log.html
 report.html
 screenshots/
+playwright-log.txt
 
 # Python
 __pycache__/
