@@ -44,21 +44,11 @@ Clean Data Base
     ...    expected_status=anything
     Should Be Equal As Integers    ${response.status_code}    204
 
-Get And Validate Customer Information
+Validate Customer Information
     [Documentation]    Retrieves customer information via API and validates it against expected values.
-    [Arguments]    ${expected_first}    ${expected_last}    
-    ...    ${expected_phone}  ${expected_address}  ${expected_city}   
-    ...    ${expected_state}   ${expected_zip}   ${expected_ssn} 
-
-    ${params}=    Create Dictionary    _type=json
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${CUSTOMER_ID}
-    ...    params=${params}
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    200
-    ${customer}=    Set Variable    ${response.json()}
+    [Arguments]    ${customer}    ${expected_first}    ${expected_last}
+    ...    ${expected_phone}    ${expected_address}    ${expected_city}
+    ...    ${expected_state}    ${expected_zip}    ${expected_ssn}
 
     ${first_name}=    Get From Dictionary    ${customer}    firstName
     ${last_name}=     Get From Dictionary    ${customer}    lastName
@@ -82,3 +72,76 @@ Get And Validate Customer Information
     Should Be Equal As Strings     ${zip}           ${expected_zip}
     Should Be Equal As Strings     ${ssn}           ${expected_ssn}
 
+Get Customer Accounts
+    [Documentation]    Gets the list of accounts for the current customer via API.
+    ${params}=    Create Dictionary    _type=json
+    ${response}=    GET On Session
+    ...    parabank
+    ...    /services/bank/customers/${CUSTOMER_ID}/accounts
+    ...    params=${params}
+    ...    expected_status=anything
+    Should Be Equal As Integers    ${response.status_code}    200
+    ${accounts}=    Set Variable    ${response.json()}
+    RETURN    ${accounts}
+
+Validate Account List
+    [Documentation]    Validates that the account list is not empty and each account has id, type, balance.
+    [Arguments]    ${accounts}
+    Should Not Be Empty    ${accounts}
+    ${count}=    Get Length    ${accounts}
+    Should Be True    ${count} >= 1
+    FOR    ${i}    IN RANGE    ${count}
+        ${account}=    Get From List    ${accounts}    ${i}
+        Should Not Be Empty    ${account}    id
+        Should Not Be Empty    ${account}    type
+        Should Not Be Empty    ${account}    balance
+    END
+
+Get Accounts With Invalid Customer And Validate Error
+    [Arguments]    ${invalid_id}
+    ${response}=    GET On Session
+    ...    parabank
+    ...    /services/bank/customers/${invalid_id}/accounts
+    ...    expected_status=anything
+    Should Be Equal As Integers    ${response.status_code}    400
+    Log    Body: ${response.text}
+    Should Contain    ${response.text}    Could not find customer #0
+
+Get Customer Information Response
+    [Arguments]    ${customer_id}    ${expected_status}=200
+    ${params}=    Create Dictionary    _type=json
+    ${response}=    GET On Session
+    ...    parabank
+    ...    /services/bank/customers/${customer_id}
+    ...    params=${params}
+    ...    expected_status=anything
+    Should Be Equal As Integers    ${response.status_code}    ${expected_status}
+    RETURN    ${response}
+
+Update Customer Information With Random Data
+    [Documentation]    Updates customer information with random data via API and validates the update was successful.
+    
+    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}=    Generate Data For New User
+
+    ${params}=    Create Dictionary
+    ...    firstName=${first_name}
+    ...    lastName=${last_name}
+    ...    phoneNumber=${phone_number}
+    ...    street=${address}
+    ...    city=${city}
+    ...    state=${state}
+    ...    zipCode=${zip_code}
+    ...    ssn=${ssn}
+    ...    username=${username}
+    ...    password=${password}
+
+    ${response}=    POST On Session
+    ...    parabank
+    ...    /services/bank/customers/update/${CUSTOMER_ID}
+    ...    params=${params}
+    ...    expected_status=anything
+
+    Should Be Equal As Integers    ${response.status_code}    200
+    Should Contain    ${response.text}    Successfully updated customer profile
+
+    RETURN   ${response}    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}

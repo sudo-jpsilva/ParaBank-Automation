@@ -36,7 +36,6 @@ Account Transfer Between Accounts
     Transfer Funds    ${money}    ${from_account}    ${to_account}
     Account Overview
     
-
 Open New Account and Verify Via API
     [Documentation]    This test opens a new account in the UI and verifies via API that the new account appears in the customer's accounts list.
     [Tags]    ui    e2e    api    accounts    regression
@@ -50,16 +49,8 @@ Open New Account and Verify Via API
     ${account_id}=    Capture Account ID
 
     Create Session For API
-    ${params}=    Create Dictionary    _type=json
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${CUSTOMER_ID}/accounts
-    ...    params=${params}
-    ...    expected_status=anything
 
-    Should Be Equal As Integers    ${response.status_code}    200
-    ${accounts}=    Set Variable    ${response.json()}
-
+    ${accounts}=    Get Customer Accounts
     ${account_ids}=    Create List
     FOR    ${account}    IN    @{accounts}
         ${id}=    Get From Dictionary    ${account}    id

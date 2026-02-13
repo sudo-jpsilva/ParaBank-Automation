@@ -9,115 +9,51 @@ Get Customers Accounts
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}/accounts
     [Tags]    api    get    accounts    smoke
     Create Session For API
+    ${accounts}=    Get Customer Accounts
+    Validate Account List    ${accounts}
+    Log To Console    Response body: ${accounts}
 
-    ${params}=    Create Dictionary    _type=json
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${CUSTOMER_ID}/accounts
-    ...    params=${params}
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    200
-    Log To Console    Response body: ${response.text}
-
-    ${accounts}=    Set Variable    ${response.json()}
-    Should Not Be Empty    ${accounts}
-    ${count}=    Get Length    ${accounts}
-    Should Be True    ${count} >= 1
-
-    FOR    ${i}    IN RANGE    ${count}
-        ${account}=    Get From List    ${accounts}    ${i}
-        ${account_id}=    Get From Dictionary    ${account}    id
-        ${customer_id}=    Get From Dictionary    ${account}    customerId
-        ${type}=    Get From Dictionary    ${account}    type
-        ${balance}=    Get From Dictionary    ${account}    balance
-
-        Log    Account ID: ${account_id}, Balance: ${balance}, Type: ${type}, Customer ID: ${customer_id} 
-    END
-    
 Get Accounts With Invalid Customer ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}/accounts
-    [Tags]    api    get    accounts    negative     boundary
+    [Tags]    api    get    accounts    negative    boundary
     Create Session For API
-
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${INVALID_ID}/accounts
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    400
-    Log    Body: ${response.text}
-    Should Contain    ${response.text}    Could not find customer #0
-
+    Get Accounts With Invalid Customer And Validate Error    ${INVALID_ID}
 
 Get Customer Information
     [Documentation]    Happy-path test for GET /services/bank/customers/{customer_id}
     [Tags]    api    get    customer    smoke
-    Create Session For API
-
-    ${params}=    Create Dictionary    _type=json
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${CUSTOMER_ID}
-    ...    params=${params}
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    200
-    Get And Validate Customer Information  expected_first=${FIRSTNAME}    expected_last=${LASTNAME}    
-    ...    expected_phone=${PHONE}   expected_address=${ADDRESS}
-    ...    expected_city=${CITY}     expected_state=${STATE}  expected_zip=${ZIP}
-    ...    expected_ssn=${SSN}
-
+        Create Session For API
+        ${response}=    Get Customer Information Response    ${CUSTOMER_ID}  expected_status=200
+        ${customer}=    Set Variable    ${response.json()}
+        Validate Customer Information    ${customer}    ${FIRSTNAME}    ${LASTNAME}    
+        ...    ${PHONE}    ${ADDRESS}    ${CITY}    ${STATE}    ${ZIP}     ${SSN}
 
 Get Customer Information With Invalid ID
     [Documentation]    Negative test for GET /services/bank/customers/{customer_id}
     [Tags]    api    get    customer    negative     boundary    
     Create Session For API
-
-    ${response}=    GET On Session
-    ...    parabank
-    ...    /services/bank/customers/${INVALID_ID}
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    400
-    Log    Body: ${response.text}
+    ${response}=    Get Customer Information Response    ${INVALID_ID}    expected_status=400
     Should Contain    ${response.text}    Could not find customer #0
 
 Update Customer Information
     [Documentation]    Happy-path test for POST /services/bank/customers/update/{customer_id}
     [Tags]    api    post    customer    regression    
-    
     Create Session For API
+        ${response}    ${first_name}    ${last_name}    ${email}    ${password}    
+        ...    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    
+        ...    ${ssn}    ${username}=    Update Customer Information With Random Data
 
-    ${params}=    Create Dictionary
-    ...    firstName=UpdatedFirstName
-    ...    lastName=UpdatedLastName
-    ...    phoneNumber=555-9999
-    ...    street=Updated Street 123
-    ...    city=Updated City
-    ...    state=UP
-    ...    zipCode=99999
-    ...    ssn=999-99-9999
-    ...    username=${USERNAME}
-    ...    password=${PASSWORD}
+    ${get_response}=    Get Customer Information Response    ${CUSTOMER_ID}     expected_status=200
+    ${customer}=    Set Variable    ${get_response.json()}
 
-    ${response}=    POST On Session
-    ...    parabank
-    ...    /services/bank/customers/update/${CUSTOMER_ID}
-    ...    params=${params}
-    ...    expected_status=anything
-
-    Should Be Equal As Integers    ${response.status_code}    200
-    Should Contain    ${response.text}    Successfully updated customer profile
-
-    Get And Validate Customer Information  expected_first=UpdatedFirstName    expected_last=UpdatedLastName    
-    ...    expected_phone=555-9999   expected_address=Updated Street 123    expected_city=Updated City
-    ...    expected_state=UP  expected_zip=99999   expected_ssn=999-99-9999
+    Validate Customer Information    ${customer}    ${first_name}    ${last_name}
+    ...    ${phone_number}    ${address}    ${city}    ${state}    ${zip_code}    ${ssn}
 
 
 
 
 
-    
+
+
 
 

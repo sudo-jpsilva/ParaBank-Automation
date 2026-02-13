@@ -123,10 +123,12 @@ uv run python -m robot --dryrun -d results tests/
 
 - **Page Object Model (POM)** — locators and UI keywords isolated in `resources/pages/`, never in test files
 - **Centralized variables** — single `variables.resource` for all global config and constants
-- **Randomized test data** — custom `faker.py` library generates unique user data per run, avoiding test coupling
+- **Randomized test data** — custom `faker.py` library and modular keywords generate unique user data per run, avoiding test coupling
 - **API + UI validation** — e2e tests combine browser actions with REST API assertions
 - **Clean test isolation** — database reset via API before each suite; `Suite Setup` / `Test Teardown` hooks
 - **Single import entry point** — test files import only `common.resource`, which transitively provides everything
+- **Flexible, reusable keywords** — API keywords accept optional arguments (e.g., expected status), allowing use in both positive and negative scenarios without duplication
+- **Generalized data handling** — keywords return all generated data, and each test uses only the necessary fields, making reuse easy and safe
 
 ---
 
