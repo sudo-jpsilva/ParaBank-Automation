@@ -8,6 +8,7 @@ dependencies = [
     "robotframework>=7.4.1",
     "robotframework-browser>=19.12.4",
     "robotframework-requests>=0.9.7",
+    "robotframework-robocop>=8.0.0",
 ]
 
 [tool.uv.workspace]

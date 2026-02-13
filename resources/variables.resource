@@ -1,11 +1,10 @@
 *** Settings ***
-Documentation    Centralized variables for the ParaBank automation project.
-...              All global configuration, URLs, and shared constants are defined here
-...              to avoid scattering variables across multiple resource files.
+Documentation       Centralized variables for the ParaBank automation project.
+...                 All global configuration, URLs, and shared constants are defined here
+...                 to avoid scattering variables across multiple resource files.
 
 
 *** Variables ***
-
 # Browser Configuration
 ${BASE_URL}                 https://parabank.parasoft.com/parabank
 ${HOME_URL}                 https://parabank.parasoft.com/parabank/index.htm

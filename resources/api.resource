@@ -3,28 +3,28 @@ Library     Collections
 Library     RequestsLibrary
 Resource    variables.resource
 
-*** Keywords ***
 
+*** Keywords ***
 Clean and Initialize Database
     [Documentation]    Resets and initializes the ParaBank database to ensure a clean state for testing.
     Clean Data Base
     Initialize Database
 
 Create Session For API
-    Create Session    parabank    ${BASE_URL}     verify=False
+    Create Session    parabank    ${BASE_URL}    verify=False
 
 Login With API to Get User ID
     [Documentation]    Logs in via API and extracts the customer ID for use in subsequent API calls.
     Create Session For API
     ${params}=    Create Dictionary    _type=json
-    ${response}=    GET On Session    parabank    
-    ...    url=/services/bank/login/${USERNAME}/${PASSWORD}    
+    ${response}=    GET On Session    parabank
+    ...    url=/services/bank/login/${USERNAME}/${PASSWORD}
     ...    params=${params}
     Log To Console    Login Response: ${response.text}
     Should Be Equal As Integers    ${response.status_code}    200
     ${json}=    Evaluate    json.loads('''${response.text}''')    json
-    ${customer_id}=   Get From Dictionary   ${json}   id
-    Set Suite Variable   ${CUSTOMER_ID}   ${customer_id}
+    ${customer_id}=    Get From Dictionary    ${json}    id
+    Set Suite Variable    ${CUSTOMER_ID}    ${customer_id}
 
 Initialize Database
     [Documentation]    Initializes the ParaBank database via API.
@@ -51,26 +51,26 @@ Validate Customer Information
     ...    ${expected_state}    ${expected_zip}    ${expected_ssn}
 
     ${first_name}=    Get From Dictionary    ${customer}    firstName
-    ${last_name}=     Get From Dictionary    ${customer}    lastName
-    ${phone}=         Get From Dictionary    ${customer}    phoneNumber
+    ${last_name}=    Get From Dictionary    ${customer}    lastName
+    ${phone}=    Get From Dictionary    ${customer}    phoneNumber
 
-    Should Be Equal As Strings     ${first_name}    ${expected_first}
-    Should Be Equal As Strings     ${last_name}     ${expected_last}
-    Should Be Equal As Strings     ${phone}         ${expected_phone}
+    Should Be Equal As Strings    ${first_name}    ${expected_first}
+    Should Be Equal As Strings    ${last_name}    ${expected_last}
+    Should Be Equal As Strings    ${phone}    ${expected_phone}
 
     # Nested fields (address)
-    ${address}=       Get From Dictionary    ${customer}    address
-    ${street}=        Get From Dictionary    ${address}     street
-    ${city}=          Get From Dictionary    ${address}     city
-    ${state}=         Get From Dictionary    ${address}     state    
-    ${zip}=           Get From Dictionary    ${address}     zipCode
-    ${ssn}=           Get From Dictionary    ${customer}    ssn
-    
-    Should Be Equal As Strings     ${street}        ${expected_address}
-    Should Be Equal As Strings     ${city}          ${expected_city}
-    Should Be Equal As Strings     ${state}         ${expected_state}
-    Should Be Equal As Strings     ${zip}           ${expected_zip}
-    Should Be Equal As Strings     ${ssn}           ${expected_ssn}
+    ${address}=    Get From Dictionary    ${customer}    address
+    ${street}=    Get From Dictionary    ${address}    street
+    ${city}=    Get From Dictionary    ${address}    city
+    ${state}=    Get From Dictionary    ${address}    state
+    ${zip}=    Get From Dictionary    ${address}    zipCode
+    ${ssn}=    Get From Dictionary    ${customer}    ssn
+
+    Should Be Equal As Strings    ${street}    ${expected_address}
+    Should Be Equal As Strings    ${city}    ${expected_city}
+    Should Be Equal As Strings    ${state}    ${expected_state}
+    Should Be Equal As Strings    ${zip}    ${expected_zip}
+    Should Be Equal As Strings    ${ssn}    ${expected_ssn}
 
 Get Customer Accounts
     [Documentation]    Gets the list of accounts for the current customer via API.
@@ -120,8 +120,9 @@ Get Customer Information Response
 
 Update Customer Information With Random Data
     [Documentation]    Updates customer information with random data via API and validates the update was successful.
-    
-    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}=    Generate Data For New User
+
+    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}
+    ...    ${zip_code}    ${phone_number}    ${ssn}    ${username}=    Generate Data For New User
 
     ${params}=    Create Dictionary
     ...    firstName=${first_name}
@@ -144,4 +145,4 @@ Update Customer Information With Random Data
     Should Be Equal As Integers    ${response.status_code}    200
     Should Contain    ${response.text}    Successfully updated customer profile
 
-    RETURN   ${response}    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}
+    RETURN    ${response}    ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}
