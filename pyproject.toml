@@ -1,7 +1,7 @@
 [project]
-name = "e-commerce-automation"
+name = "parabank-automation"
 version = "0.1.0"
-description = "Add your description here"
+description = "ParaBank Test Automation Using Robot Framework and Browser Library"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -13,5 +13,5 @@ dependencies = [
 [tool.uv.workspace]
 members = [
     "robotframework",
-    "e-commerce-automation",
+    "parabank-automation",
 ]

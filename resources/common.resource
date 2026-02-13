@@ -1,9 +1,11 @@
 *** Settings ***
 Library    Browser
 Library    ../libraries/faker.py
-Resource    ../resources/pages/home_page.resource
-Resource   ../resources/pages/login_sign_up.resource
-Resource    ../resources/api.resource
+Resource   variables.resource
+Resource   pages/home_page.resource
+Resource   pages/login_sign_up.resource
+Resource   pages/account_page.resource
+Resource   api.resource
 
 *** Keywords ***
 
@@ -21,7 +23,6 @@ Generate Data For New User
     ${phone_number}  Generate Phone Number
     ${ssn}           Generate SSN
     ${username}      Generate Username
-    ${password}      Generate Random Password
     RETURN   ${first_name}    ${last_name}    ${email}    ${password}    ${address}    ${city}    ${state}    ${zip_code}    ${phone_number}    ${ssn}    ${username}
 
 Generate Invalid User
@@ -62,6 +63,12 @@ Suite Setup E2E
     Go to Home Page
     Register New User
     Logout User
+
+Suite Setup For API
+    [Documentation]    Performs end-to-end setup tasks, such as logging in via API to retrieve necessary data for tests.
+    Clean and Initialize Database
+    Suite Setup E2E
+    Login With API to Get User ID
 
 Test Setup
     [Documentation]    This keyword is executed before each test case. It can be used to set up any necessary preconditions for the individual tests.

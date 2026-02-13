@@ -1,6 +1,5 @@
 *** Settings ***
 Resource    ../resources/common.resource
-Resource    ../resources/api.resource
 
 Suite Setup   Initialize Test Data
 

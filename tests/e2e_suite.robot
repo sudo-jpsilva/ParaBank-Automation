@@ -1,7 +1,5 @@
 *** Settings ***
-Library    Collections
 Resource    ../resources/common.resource
-Resource    ../resources/pages/account_page.resource
 
 Suite Setup   Suite Setup E2E
 
@@ -10,10 +8,10 @@ Open New Account and Verify in Account Overview
     [Documentation]    This test logs in with a valid user, opens a new account from an existing one,
     ...                captures the ID of the new account displayed on the screen, and verifies that the new account appears in the accounts list.
     [Tags]    ui    e2e    accounts    smoke
-    [Teardown]    Logout User
+    [Teardown]    Run Keyword And Ignore Error    Logout User
     Login User
     Open New Account   
-    Select Account Type    account_type=${account_type_savings}
+    Select Account Type    account_type=${ACCOUNT_TYPE_SAVINGS}
     Select Source Account
     Create New Account
     ${account_id}=    Capture Account ID
@@ -23,10 +21,10 @@ Open New Account and Verify in Account Overview
 Account Transfer Between Accounts
     [Documentation]    This test logs in with a valid user, opens a new account, and performs a fund transfer between accounts.
     [Tags]    ui    e2e    transfer    smoke     regression
-    [Teardown]    Logout User
+    [Teardown]    Run Keyword And Ignore Error    Logout User
     Login User
     Open New Account   
-    Select Account Type    account_type=${account_type_checking}
+    Select Account Type    account_type=${ACCOUNT_TYPE_CHECKING}
     Select Source Account
     Create New Account
     #Transfer Funds
@@ -46,7 +44,7 @@ Account Transfer Between Accounts
 Open New Account and Verify Via API
     [Documentation]    This test opens a new account in the UI and verifies via API that the new account appears in the customer's accounts list.
     [Tags]    ui    e2e    api    accounts    regression
-    [Teardown]    Logout User
+    [Teardown]    Run Keyword And Ignore Error    Logout User
     Login User
     Login With API to Get User ID
     Open New Account   

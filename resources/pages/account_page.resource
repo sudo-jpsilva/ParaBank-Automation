@@ -1,12 +1,8 @@
 *** Settings ***
 Library    Browser
 Library    Collections
+Resource   ../variables.resource
 
-
-*** Variables ***
-
-${account_type_savings}    0
-${account_type_checking}   1
 
 *** Keywords ***
 
@@ -19,16 +15,29 @@ Select Account Type
     [Documentation]    Selects the type of account to open.
     [Arguments]    ${account_type}=${account_type_savings}
     Select Options By    xpath=//*[@id="type"]    value    ${account_type}
-    Wait For Elements State    id=fromAccountId    visible    10s
-    Sleep    5s
+    Wait For Elements State    id=fromAccountId    visible    15s
+    #Sleep    5s
 
 Select Source Account
     [Documentation]    Selects a source account for transfers when opening a new account.
-    ${accounts}=         Get Select Options    id=fromAccountId
+    Wait For Accounts To Load    id=fromAccountId
+    ${accounts}=    Get Select Options    id=fromAccountId
     Log    Available accounts: ${accounts}
-    ${from_account}=     Get From List        ${accounts}    0
-    ${from_account_value}=    Get From Dictionary    ${from_account}    value
-    Select Options By    id=fromAccountId    value    ${from_account_value}
+    ${from_account}=    Get From List    ${accounts}    0
+    ${from_value}=    Get From Dictionary    ${from_account}    value
+    Select Options By    id=fromAccountId    value    ${from_value}
+    RETURN    ${from_value}
+
+Wait For Accounts To Load
+    [Documentation]    Waits until a select element has at least one option loaded (retries up to 10s).
+    [Arguments]    ${selector}
+    FOR    ${i}    IN RANGE    20
+        ${options}=    Get Select Options    ${selector}
+        ${count}=    Get Length    ${options}
+        IF    ${count} > 0    RETURN
+        Sleep    500ms
+    END
+    Fail    Select element '${selector}' had no options after 10 seconds.
 
 Create New Account
     [Documentation]    Clicks the button to create a new account.

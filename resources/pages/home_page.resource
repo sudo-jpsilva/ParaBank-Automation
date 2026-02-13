@@ -1,11 +1,7 @@
 *** Settings ***
 Library    Browser
+Resource   ../variables.resource
 
-*** Variables ***
-
-${HOME_URL}    https://parabank.parasoft.com/parabank/index.htm
-${BROWSER}     firefox
-${HEADLESS}    True
 
 *** Keywords ***
 Open Browser

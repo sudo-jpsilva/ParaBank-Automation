@@ -30,13 +30,11 @@ ${login_password_path}      css=#loginPanel input[name="password"]
 
 #Login Button
 ${login_button}             //*[@id="loginPanel"]/form/div[3]/input
-${logout_link}              css=#leftPanel > ul > li:nth-child(8) > a
+${logout_link}              //*[@id="leftPanel"]/ul/li[8]/a
 
 ${welcome_message}          Welcome
 
 *** Keywords ***
-
-
 
 Login User
     [Arguments]    ${username}=${USERNAME}    ${password}=${PASSWORD}
@@ -51,24 +49,35 @@ Wait For Login Error Message
     Wait For Elements State    text=${login_error_message}      visible    10s
 
 Logout User
-    Click        ${logout_link}
+    Wait For Elements State    xpath=${logout_link}    visible    10s
+    Click        xpath=${logout_link}
 
 Fill Form With Valid Data
-    [Documentation]    This keyword fills the registration form with valid data and waits for the welcome message to be visible.
-    Sleep        5s
-    Fill Text    xpath=${first_name_path}        ${FIRSTNAME}
-    Fill Text    xpath=${last_name_path}         ${LASTNAME}
-    Fill Text    xpath=${address_path}           ${ADDRESS}
-    Fill Text    xpath=${city_path}              ${CITY}
-    Fill Text    xpath=${state_path}             ${STATE}
-    Fill Text    xpath=${zip_code_path}          ${ZIP}
-    Fill Text    xpath=${phone_number_path}      ${PHONE}
-    Fill Text    xpath=${ssn_path}               ${SSN}
-    Fill Text    xpath=${username_path}          ${USERNAME}
-    Fill Text    xpath=${password_path}          ${PASSWORD}
-    Fill Text    xpath=${confirm_password_path}  ${PASSWORD}
+    [Documentation]    This keyword fills the registration form with valid data
+    Wait And Fill Text    xpath=${first_name_path}        ${FIRSTNAME}
+    Wait And Fill Text    xpath=${last_name_path}         ${LASTNAME}
+    Wait And Fill Text    xpath=${address_path}           ${ADDRESS}
+    Wait And Fill Text    xpath=${city_path}              ${CITY}
+    Wait And Fill Text    xpath=${state_path}             ${STATE}
+    Wait And Fill Text    xpath=${zip_code_path}          ${ZIP}
+    Wait And Fill Text    xpath=${phone_number_path}      ${PHONE}
+    Wait And Fill Text    xpath=${ssn_path}               ${SSN}
+    Wait And Fill Text    xpath=${username_path}          ${USERNAME}
+    Wait And Fill Text    xpath=${password_path}          ${PASSWORD}
+    Wait And Fill Text    xpath=${confirm_password_path}  ${PASSWORD}
     Click        xpath=${register_button}
-    Sleep        5s
+
+Wait And Fill Text
+    [Documentation]    Waits for a field to be visible, fills it with the given value, and verifies the value was entered.
+    [Arguments]    ${selector}    ${value}
+    Wait For Elements State    ${selector}    visible    10s
+    Fill Text                  ${selector}    ${value}
+    ${actual}=    Get Text     ${selector}
+    IF    '${actual}' != '${value}'
+        Clear Text    ${selector}
+        Fill Text     ${selector}    ${value}
+        Get Text      ${selector}    ==    ${value}
+    END
 
 Sign Up User
     Click    ${sign_up_link}

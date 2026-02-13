@@ -1,13 +1,8 @@
 *** Settings ***
-Library    RequestsLibrary
 Resource    ../resources/common.resource
-Resource    ../resources/api.resource
 
 Suite Setup   Suite Setup For API
 
-*** Variables ***
-
-${invalid_id}    00000
 
 *** Test Cases ***
 Get Customers Accounts
@@ -47,7 +42,7 @@ Get Accounts With Invalid Customer ID
 
     ${response}=    GET On Session
     ...    parabank
-    ...    /services/bank/customers/${invalid_id}/accounts
+    ...    /services/bank/customers/${INVALID_ID}/accounts
     ...    expected_status=anything
 
     Should Be Equal As Integers    ${response.status_code}    400
@@ -81,7 +76,7 @@ Get Customer Information With Invalid ID
 
     ${response}=    GET On Session
     ...    parabank
-    ...    /services/bank/customers/${invalid_id}
+    ...    /services/bank/customers/${INVALID_ID}
     ...    expected_status=anything
 
     Should Be Equal As Integers    ${response.status_code}    400
@@ -116,7 +111,7 @@ Update Customer Information
     Should Contain    ${response.text}    Successfully updated customer profile
 
     Get And Validate Customer Information  expected_first=UpdatedFirstName    expected_last=UpdatedLastName    
-    ...    expected_phone=555-9999   expected_address=Updated Street 123,  expected_city=Updated City,
+    ...    expected_phone=555-9999   expected_address=Updated Street 123    expected_city=Updated City
     ...    expected_state=UP  expected_zip=99999   expected_ssn=999-99-9999
 
 

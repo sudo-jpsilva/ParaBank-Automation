@@ -1,23 +1,9 @@
 *** Settings ***
-
-Library     Browser
 Library     Collections
 Library     RequestsLibrary
-Resource    ../resources/common.resource
-
-
-
-*** Variables ***
-
-${BASE_URL}         https://parabank.parasoft.com/parabank
+Resource    variables.resource
 
 *** Keywords ***
-
-Suite Setup For API
-    [Documentation]    Performs end-to-end setup tasks, such as logging in via API to retrieve necessary data for tests.
-    Clean and Initialize Database
-    Suite Setup E2E
-    Login With API to Get User ID
 
 Clean and Initialize Database
     [Documentation]    Resets and initializes the ParaBank database to ensure a clean state for
@@ -78,20 +64,21 @@ Get And Validate Customer Information
     ${last_name}=     Get From Dictionary    ${customer}    lastName
     ${phone}=         Get From Dictionary    ${customer}    phoneNumber
 
-    Should Not Be Empty    ${first_name}    ${expected_first}
-    Should Not Be Empty    ${last_name}     ${expected_last}
-    Should Not Be Empty    ${phone}         ${expected_phone}
+    Should Be Equal As Strings     ${first_name}    ${expected_first}
+    Should Be Equal As Strings     ${last_name}     ${expected_last}
+    Should Be Equal As Strings     ${phone}         ${expected_phone}
 
     # Campos aninhados (address)
     ${address}=       Get From Dictionary    ${customer}    address
+    ${street}=        Get From Dictionary    ${address}     street
     ${city}=          Get From Dictionary    ${address}     city
-    ${state}=         Get From Dictionary    ${address}     state
+    ${state}=         Get From Dictionary    ${address}     state    
     ${zip}=           Get From Dictionary    ${address}     zipCode
     ${ssn}=           Get From Dictionary    ${customer}    ssn
     
-    Should Not Be Empty    ${address}       ${expected_address}
-    Should Not Be Empty    ${city}          ${expected_city}
-    Should Not Be Empty    ${state}         ${expected_state}
-    Should Not Be Empty    ${zip}           ${expected_zip}
-    Should Not Be Empty    ${ssn}           ${expected_ssn}
+    Should Be Equal As Strings     ${street}        ${expected_address}
+    Should Be Equal As Strings     ${city}          ${expected_city}
+    Should Be Equal As Strings     ${state}         ${expected_state}
+    Should Be Equal As Strings     ${zip}           ${expected_zip}
+    Should Be Equal As Strings     ${ssn}           ${expected_ssn}
 
